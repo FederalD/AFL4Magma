@@ -68,9 +68,9 @@ static void find_as(u8* argv0) {
 
   if (afl_path) {
 
-    tmp = alloc_printf("%s/as", afl_path);
+    tmp = alloc_printf("%s/as", afl_path);//构建路径 afl_path/as。找afl__path下是否有as
 
-    if (!access(tmp, X_OK)) {
+    if (!access(tmp, X_OK)) {//使用 access 函数检查该路径是否可执行（X_OK）。
       as_path = afl_path;
       ck_free(tmp);
       return;
@@ -80,19 +80,19 @@ static void find_as(u8* argv0) {
 
   }
 
-  slash = strrchr(argv0, '/');
+  slash = strrchr(argv0, '/');//使用 strrchr 找到 argv0 中最后一个 / 的位置，以确定可执行文件的目录。
 
   if (slash) {
 
     u8 *dir;
-
+    //将该位置的字符替换为终止符 0，然后复制目录路径。
     *slash = 0;
     dir = ck_strdup(argv0);
     *slash = '/';
 
     tmp = alloc_printf("%s/afl-as", dir);
 
-    if (!access(tmp, X_OK)) {
+    if (!access(tmp, X_OK)) {//构建路径 dir/afl-as 并检查其可执行性。
       as_path = dir;
       ck_free(tmp);
       return;
@@ -103,7 +103,7 @@ static void find_as(u8* argv0) {
 
   }
 
-  if (!access(AFL_PATH "/as", X_OK)) {
+  if (!access(AFL_PATH "/as", X_OK)) {//如果前面的检查都失败了，最后检查默认路径 AFL_PATH/as。
     as_path = AFL_PATH;
     return;
   }
