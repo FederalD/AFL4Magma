@@ -52,7 +52,7 @@
 #include <string.h>
 
 static u8*  as_path;                /* Path to the AFL 'as' wrapper      */
-static u8** cc_params;              /* Parameters passed to the real CC  */
+static u8** cc_params;              /* Parameters passed to the real CC u**代表指针数组的指针 */
 static u32  cc_par_cnt = 1;         /* Param count, including argv0      */
 static u8   be_quiet,               /* Quiet mode                        */
             clang_mode;             /* Invoked as afl-clang*?            */
