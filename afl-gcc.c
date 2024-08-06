@@ -114,8 +114,8 @@ static void find_as(u8* argv0) {
 
 
 /* Copy argv to cc_params, making the necessary edits. */
-
-static void edit_params(u32 argc, char** argv) {
+//这段代码是一个 C 函数 edit_params，用于处理和编辑编译器参数。
+static void edit_params(u32 argc, char** argv) {//argc（参数数量）和 argv（参数数组）
 
   u8 fortify_set = 0, asan_set = 0;
   u8 *name;
