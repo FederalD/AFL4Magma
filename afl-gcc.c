@@ -60,7 +60,7 @@ static u8   be_quiet,               /* Quiet mode                        */
 
 /* Try to find our "fake" GNU assembler in AFL_PATH or at the location derived
    from argv[0]. If that fails, abort. */
-
+//这段代码是一个 C 函数 find_as，它的目的是查找 GNU 汇编器（as）的可执行路径。
 static void find_as(u8* argv0) {
 
   u8 *afl_path = getenv("AFL_PATH");
